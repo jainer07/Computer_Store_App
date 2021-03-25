@@ -1,0 +1,26 @@
+/* #region calculadora ganancias*/
+
+.ContentValoresGanacia {
+    padding: 20px;
+}
+
+.CenterValoresGanacia {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.TotalesGanacia {
+    padding: 5%;
+    width: 70%;
+}
+
+.alinearValor {
+    display: block;
+    padding-bottom: 15px;
+    padding-top: 15px;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+
+/* #endregion */
