@@ -1,7 +1,36 @@
+:root {
+    --DARK_PRIMARY_COLOR: #303F9F;
+    --LIGHT_PRIMARY_COLOR: #C5CAE9;
+    --PRIMARY_COLOR: #3F51B5;
+    --TEXT_ICONS: #FFFFFF;
+    --ACCENT_COLOR: #607D8B;
+    --PRIMARY_TEXT: #212121;
+    --SECONDARY_TEXT: #757575;
+    --DIVIDER_COLOR: #BDBDBD;
+}
+
+body {
+    color: var(--PRIMARY_TEXT);
+}
+
+
+/* #region menu */
+
+.navbar {
+    background-color: var(--DARK_PRIMARY_COLOR);
+}
+
+
+/* #endregion */
+
+
 /* #region calculadora ganancias*/
 
 .ContentValoresGanacia {
     padding: 20px;
+    width: 70%;
+    margin-left: 40%;
+    border: solid 1px var(--ACCENT_COLOR);
 }
 
 .CenterValoresGanacia {
@@ -11,7 +40,10 @@
 
 .TotalesGanacia {
     padding: 5%;
-    width: 70%;
+    width: 60%;
+    margin-left: 10%;
+    margin-top: 4%;
+    border: solid 1px var(--ACCENT_COLOR);
 }
 
 .alinearValor {
@@ -20,6 +52,15 @@
     padding-top: 15px;
     font-weight: bold;
     font-size: 18px;
+}
+
+span#lblValorIva {
+    margin-left: 45px;
+}
+
+span#lblValorTotal {
+    margin-left: 40px;
+    color: #28a745;
 }
 
 

@@ -23,39 +23,35 @@
                 <h5>Calcular ganacias de los productos</h5>
             </div>
             <div class="col-md-12">
-                <form id="frmCalculaGanacia">
+                <form id="frmCalculaGanacia" class="mt-lg-5 mt-md-3">
                     <div class="row">
                         <div class="col-md-6">
-                            <div class="ContentValoresGanacia bg-info">
-                                <div class="col-md-8 CenterValoresGanacia">
+                            <div class="ContentValoresGanacia">
+                                <div class="col-md-12 CenterValoresGanacia">
                                     <div class="form-group">
                                         <label for="txtValorCompra">Valor de compra</label>
-                                        <input type="number" class="form-control" id="txtValorCompra">
+                                        <input type="number" class="form-control InputValor" id="txtValorCompra">
                                     </div>
                                 </div>
-                                <div class="col-md-8 CenterValoresGanacia">
+                                <div class="col-md-12 CenterValoresGanacia">
                                     <div class="form-group">
                                         <label for="txtPorcentajeIVA">Porcentaje IVA</label>
-                                        <input type="number" class="form-control" id="txtPorcentajeIVA">
+                                        <input type="number" class="form-control InputValor" id="txtPorcentajeIVA">
                                     </div>
                                 </div>
-                                <div class="col-md-8 CenterValoresGanacia">
+                                <div class="col-md-12 CenterValoresGanacia">
                                     <div class="form-group">
                                         <label for="txtPorcentajeGanancia">Porcentaje ganancias</label>
-                                        <input type="number" class="form-control" id="txtPorcentajeGanancia">
+                                        <input type="number" class="form-control InputValor" id="txtPorcentajeGanancia">
                                     </div>
-                                </div>
-                                <div class="col-md-8 text-right">
-                                    <button type="button" id="btnCalcular" class="btn btn-success">Calcular</button>
-                                    <button type="button" id="btnBorrar" class="btn btn-danger">Borrar</button>
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <div class="TotalesGanacia bg-primary">
-                                <label class="alinearValor">Valor IVA: <span id="lblValorIva">$ 950</span></label>
-                                <label class="alinearValor">Valor ganancia: <span id="lblValorGanacia">$ 1,500</span></label>
-                                <label class="alinearValor">Valor total: <span id="lblValorTotal">$ 7,450</span></label>
+                            <div class="TotalesGanacia">
+                                <label class="alinearValor">Valor IVA: <span id="lblValorIva">$ 0</span></label>
+                                <label class="alinearValor">Valor ganancia: <span id="lblValorGanacia">$ 0</span></label>
+                                <label class="alinearValor">Valor total: <span id="lblValorTotal">$ 0</span></label>
                             </div>
                         </div>
                     </div>

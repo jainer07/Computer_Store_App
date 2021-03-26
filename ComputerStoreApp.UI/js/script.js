@@ -1,11 +1,18 @@
 //#region calculadora ganancias
 $("#btnCalcular").click(function() {
-    let ValorCompra = $("#txtValorCompra").val();
-    let PorcentajeIVA = $("#txtPorcentajeIVA").val();
-    let PorcentajeGanancia = $("#txtPorcentajeGanancia").val();
+    IniciarCalculos();
+});
+$(".InputValor").blur(function() {
+    IniciarCalculos();
+});
+
+function IniciarCalculos() {
+    let ValorCompra = $("#txtValorCompra").val() == "" ? 0 : $("#txtValorCompra").val();
+    let PorcentajeIVA = $("#txtPorcentajeIVA").val() == "" ? 0 : $("#txtPorcentajeIVA").val();
+    let PorcentajeGanancia = $("#txtPorcentajeGanancia").val() == "" ? 0 : $("#txtPorcentajeGanancia").val();
     let lsValores = CalcularValores(PorcentajeIVA, PorcentajeGanancia, ValorCompra);
     SetValoresTotales(lsValores);
-});
+}
 
 function CalcularValores(porcentajeIVA, porcentajeGanancia, valorCompra) {
     let ValorIva = ValorPorcetaje(porcentajeIVA, valorCompra);
@@ -23,12 +30,8 @@ function CalcularValores(porcentajeIVA, porcentajeGanancia, valorCompra) {
 }
 
 function SetValoresTotales(lsValores) {
-    let ValorIVA = $("#lblValorIva");
-    let ValorGanancia = $("#lblValorGanacia");
-    let ValorTotal = $("#lblValorTotal");
-
-    ValorIVA.empty().append(lsValores[0]);
-    ValorGanancia.empty().append(lsValores[1]);
-    ValorTotal.empty().append(lsValores[2]);
+    $("#lblValorIva").empty().append("$ " + new Intl.NumberFormat("en-US").format(lsValores[0]));
+    $("#lblValorGanacia").empty().append("$ " + new Intl.NumberFormat("en-US").format(lsValores[1]));
+    $("#lblValorTotal").empty().append("$ " + new Intl.NumberFormat("en-US").format(lsValores[2]));
 }
 //#endregion calculadora ganancias
