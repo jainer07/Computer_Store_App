@@ -17,11 +17,57 @@
 
 <body>
     <div class="menuContainer"></div>
-    <h1>Medidas almacenamiento</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 mt-5 text-center">
+                <h5>Convertidor de unidades de almacenamiento</h5>
+            </div>
+            <div class="col-md-12">
+                <form id="frmCalculaGanacia" class="mt-lg-5 mt-md-3">
+                    <div class="row justify-content-center">
+                        <div class="col-md-6">
+                            <div class="ContentValoresUnidad">
+                                <div class="col-md-12 CenterValores pt-3 mb-5">
+                                    <div class="form-group ElementInline">
+                                        <label for="cbxUnidad1" class="mr-2 mt-1">Convertir</label>
+                                        <select id="cbxUnidad1" class="form-control mr-2 InputValor">
+                                            <option value="B">Bytes</option>
+                                            <option value="KB">Kilobyte</option>
+                                            <option value="MB">Megabyte</option>
+                                            <option value="GB">Gigabyte</option>
+                                            <option value="TB">Terabyte</option>
+                                        </select>
+                                        <input type="number" class="form-control InputValor" id="txtUnidad1">
+                                    </div>
+                                </div>
+                                <div class="col-md-12 CenterValores">
+                                    <div class="form-group ElementInline">
+                                        <label for="cbxUnidad2" class="mr-2 mt-1">Resultado</label>
+                                        <select id="cbxUnidad2" class="form-control mr-2 InputValor">
+                                            <option value="B">Bytes</option>
+                                            <option value="KB">Kilobyte</option>
+                                            <option value="MB">Megabyte</option>
+                                            <option value="GB">Gigabyte</option>
+                                            <option value="TB">Terabyte</option>
+                                        </select>
+                                        <input type="number" class="form-control InputValor" id="txtUnidad2">
+                                    </div>
+                                </div>
+                                <div class="col-md-12 mt-4 ResultValor">
+                                    <h3 id="lblResultado">0 B</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 </body>
 <script src="../../lib/jquery/dist/jquery.min.js"></script>
 <script src="../../lib/bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js"></script>
+<script src="../../js/script.js"></script>
 <script>
     $(document).ready(function() {
         $('.menuContainer').load("../shared/NavMenu.html");

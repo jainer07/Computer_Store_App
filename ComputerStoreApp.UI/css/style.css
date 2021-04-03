@@ -33,7 +33,7 @@ body {
     border: solid 1px var(--ACCENT_COLOR);
 }
 
-.CenterValoresGanacia {
+.CenterValores {
     margin-left: auto;
     margin-right: auto;
 }
@@ -61,6 +61,27 @@ span#lblValorIva {
 span#lblValorTotal {
     margin-left: 40px;
     color: #28a745;
+}
+
+
+/* #endregion */
+
+
+/* #region convertidor Unidades*/
+
+.ContentValoresUnidad {
+    padding: 20px;
+    border: solid 1px var(--ACCENT_COLOR);
+}
+
+.ElementInline {
+    display: flex;
+}
+
+.ResultValor {
+    color: var(--SECONDARY_TEXT);
+    text-align: center;
+    font-style: italic;
 }
 
 
