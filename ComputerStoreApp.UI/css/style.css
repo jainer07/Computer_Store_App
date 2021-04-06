@@ -86,3 +86,15 @@ span#lblValorTotal {
 
 
 /* #endregion */
+
+
+/* #region Formularios */
+
+.SizeImagenes {
+    width: 100%;
+    height: auto;
+    margin-top: 30px;
+}
+
+
+/* #endregion */
