@@ -1,3 +1,25 @@
+function ShowLoading(option) {
+    if (option == 0) {
+        $('#LoadingModal').modal('show');
+    } else if (option == 1) {
+        setTimeout(function() {
+            $('#LoadingModal').modal('hide');
+        }, 300);
+    } else if (option == 2) {
+        $('#LoadingModal').modal('hide');
+        $('#LoadingModal').css('display', 'none');
+        $('body').removeClass('modal-open');
+        $('.modal-backdrop').remove();
+    }
+}
+
+function ShowAlertMsg(titulo, texto, tipo) {
+    swal.fire({
+        title: titulo,
+        text: texto,
+        icon: tipo
+    });
+}
 //#region calculadora ganancias
 $("#btnCalcular").click(function() {
     IniciarCalculos();
@@ -35,7 +57,7 @@ function SetValoresTotales(lsValores) {
     $("#lblValorTotal").empty().append("$ " + new Intl.NumberFormat("en-US").format(lsValores[2]));
 }
 //#endregion calculadora ganancias
-//#region connvertidor de unidades
+//#region convertidor de unidades
 $("#cbxUnidad1").change(function() {
     let lsValores = GetValues(0);
     SetValues(0, lsValores);
@@ -236,4 +258,39 @@ function FormatValue(num) {
     }
     return num;
 }
-//#endregion connvertidor de unidades
+//#endregion convertidor de unidades
+//#region Administrador
+function OnClickCreateDB() {
+    ShowLoading(0);
+    $.ajax({
+        type: "POST",
+        url: '/ComputerStoreApp/Controller/CreateDB.php',
+        success: function(response) {
+            var Data = JSON.parse(response);
+            ShowLoading(2);
+            ShowAlertMsg(Data.titulo, Data.msg, Data.tipoMsg);
+        },
+        error: function(error) {
+            ShowLoading(2);
+            ShowAlertMsg("Error inesperado", "A ocurrido un error en el proceso.", "error");
+        }
+    });
+}
+
+function OnClickCreateTbl() {
+    ShowLoading(0);
+    $.ajax({
+        type: "POST",
+        url: '/ComputerStoreApp/Controller/CreateTable.php',
+        success: function(response) {
+            var Data = JSON.parse(response);
+            ShowLoading(2);
+            ShowAlertMsg(Data.titulo, Data.msg, Data.tipoMsg);
+        },
+        error: function(error) {
+            ShowLoading(2);
+            ShowAlertMsg("Error inesperado", "A ocurrido un error en el proceso.", "error");
+        }
+    });
+}
+//#endregion Administrador

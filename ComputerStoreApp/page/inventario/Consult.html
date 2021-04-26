@@ -10,15 +10,14 @@
     <title>ComputerStoreApp</title>
 
     <!-- <link href="Images/UnadLogo.jpg" rel="icon" type="image/png">-->
-    <link rel="stylesheet" href="../../lib/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
-    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="/ComputerStoreApp/lib/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/ComputerStoreApp/lib/font-awesome/all.min.css">
+    <link rel="stylesheet" href="/ComputerStoreApp/css/style.css">
+    <link rel="stylesheet" href="/ComputerStoreApp/lib/sweetalert2/sweetalert2.min.js">
 </head>
 
 <body>
     <div class="menuContainer"></div>
-
-
     <div class="container">
         <div class="row">
             <div class="col-md-12 text-center mt-3 mb-3">
@@ -38,13 +37,17 @@
             </div>
         </div>
     </div>
+    <div class="loading"></div>
 </body>
-<script src="../../lib/jquery/dist/jquery.min.js"></script>
-<script src="../../lib/bootstrap/dist/js/bootstrap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js"></script>
+<script src="/ComputerStoreApp/lib/jquery/dist/jquery.min.js"></script>
+<script src="/ComputerStoreApp/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="/ComputerStoreApp/lib/font-awesome/all.min.js"></script>
+<script src="/ComputerStoreApp/lib/sweetalert2/sweetalert2.all.min.js"></script>
+<script src="/ComputerStoreApp/js/script.js"></script>
 <script>
     $(document).ready(function() {
         $('.menuContainer').load("../shared/NavMenu.html");
+        $('.loading').load("../shared/Loading.html");
     });
 </script>
 

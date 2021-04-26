@@ -11,20 +11,25 @@
 
     <!-- <link href="Images/UnadLogo.jpg" rel="icon" type="image/png">-->
     <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link rel="stylesheet" href="lib/font-awesome/all.min.css">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="lib/sweetalert2/sweetalert2.min.css">
 </head>
 
 <body>
     <div class="menuContainer"></div>
     <img src="img/computer.jpg" class="mx-auto d-block">
+    <div class="loading"></div>
 </body>
 <script src="lib/jquery/dist/jquery.min.js"></script>
 <script src="lib/bootstrap/dist/js/bootstrap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js"></script>
+<script src="lib/font-awesome/all.min.js"></script>
+<script src="lib/sweetalert2/sweetalert2.min.js"></script>
+<script src="js/script.js"></script>
 <script>
     $(document).ready(function() {
         $('.menuContainer').load("./page/shared/NavMenu.html");
+        $('.loading').load("./page/shared/Loading.html");
     });
 </script>
 

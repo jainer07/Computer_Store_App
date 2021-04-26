@@ -1,20 +1,20 @@
 <nav class="navbar navbar-expand-lg navbar-dark">
-    <a class="navbar-brand" href="../../Index.html">Computer StoreAPP</a>
+    <a class="navbar-brand" href="/ComputerStoreApp/Index.html">Computer StoreAPP</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
     <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-        <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+        <ul class="navbar-nav ml-3 mr-auto mt-2 mt-lg-0">
             <li class="nav-item dropdown active">
                 <a class="nav-link dropdown-toggle" href="#" id="MenuInventario" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i class="fas fa-lightbulb"> </i> Inventario
                 </a>
                 <div class="dropdown-menu" aria-labelledby="MenuInventario">
-                    <a class="dropdown-item" href="../../../ComputerStoreApp/page/inventario/Create.html">Agregar producto</a>
-                    <a class="dropdown-item" href="../../../ComputerStoreApp/page/inventario/Update.html">Actualizar producto</a>
-                    <a class="dropdown-item" href="../../../ComputerStoreApp/page/inventario/Delete.html">Eliminar producto</a>
-                    <a class="dropdown-item" href="../../../ComputerStoreApp/page/inventario/Consult.html">Consultar producto</a>
+                    <a class="dropdown-item" href="/ComputerStoreApp/page/inventario/Create.html">Agregar producto</a>
+                    <a class="dropdown-item" href="/ComputerStoreApp/page/inventario/Update.html">Actualizar producto</a>
+                    <a class="dropdown-item" href="/ComputerStoreApp/page/inventario/Delete.html">Eliminar producto</a>
+                    <a class="dropdown-item" href="/ComputerStoreApp/page/inventario/Consult.html">Consultar producto</a>
                 </div>
             </li>
             <li class="nav-item dropdown">
@@ -22,12 +22,18 @@
                     <i class="fas fa-bookmark"> </i> Utilidades
                 </a>
                 <div class="dropdown-menu" aria-labelledby="MenuUtilidades">
-                    <a class="dropdown-item" href="../../../ComputerStoreApp/page/Utilidades/CalcularGanancias.html">Calcular ganancia</a>
-                    <a class="dropdown-item" href="../../../ComputerStoreApp/page/Utilidades/MedidaAlmacenamiento.html">Medida almacenamiento</a>
+                    <a class="dropdown-item" href="/ComputerStoreApp/page/Utilidades/CalcularGanancias.html">Calcular ganancia</a>
+                    <a class="dropdown-item" href="/ComputerStoreApp/page/Utilidades/MedidaAlmacenamiento.html">Medida almacenamiento</a>
                 </div>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#"><i class="fas fa-home"></i> Administrador</a>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="MenuAdministrador" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fas fa-user"> </i> Administrador
+                </a>
+                <div class="dropdown-menu" aria-labelledby="MenuUtilidades">
+                    <a class="dropdown-item" href="javascript:void(0)" onclick="OnClickCreateDB()">Crear base de datos</a>
+                    <a class="dropdown-item" href="javascript:void(0)" onclick="OnClickCreateTbl()">Crear tabla</a>
+                </div>
             </li>
         </ul>
     </div>
