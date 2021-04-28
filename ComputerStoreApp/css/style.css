@@ -96,5 +96,34 @@ span#lblValorTotal {
     margin-top: 30px;
 }
 
+.paginate_button {
+    cursor: pointer;
+    padding-left: 6px;
+    margin-left: 2px;
+    padding-right: 6px;
+    border: 1px solid #054284;
+    color: #fff;
+    background-color: var(--PRIMARY_COLOR);
+}
+
+.paginate_button:hover {
+    background-color: #2778c4;
+    color: #fff;
+    text-decoration: none;
+}
+
+div.dataTables_wrapper div.dataTables_paginate {
+    margin-top: -20px;
+}
+
+.input-error {
+    border-color: red;
+    color: red;
+}
+
+th#btnTable {
+    width: 100px !important;
+}
+
 
 /* #endregion */

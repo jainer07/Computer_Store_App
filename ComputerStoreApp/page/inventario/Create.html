@@ -21,34 +21,37 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12 text-center mt-3 mb-3">
-                <h1>Formulario Ingreso de Producto</h1>
+                <h1>Crear producto</h1>
             </div>
         </div>
         <div class="row">
             <div class="col-6">
-                <form>
+                <form id="frmCrearProducto">
                     <div class="mb-3">
                         <label for="formGroupExampleInput" class="form-label">Código</label>
-                        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Código del Producto">
+                        <input type="text" class="form-control" id="txtCodigo" maxlength="6" placeholder="Código del Producto">
                     </div>
                     <div class="mb-3">
                         <label for="formGroupExampleInput2" class="form-label">Nombre</label>
-                        <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Nombre del Producto">
+                        <input type="text" class="form-control" id="txtNombre" maxlength="40" placeholder="Nombre del Producto">
                     </div>
                     <div class="mb-3">
                         <label for="formGroupExampleInput" class="form-label">Marca</label>
-                        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Marca del Producto">
+                        <input type="text" class="form-control" id="txtMarca" maxlength="40" placeholder="Marca del Producto">
                     </div>
                     <div class="mb-3">
                         <label for="formGroupExampleInput2" class="form-label">Precio</label>
-                        <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Precio de Compra">
+                        <input type="number" class="form-control" id="txtPrecio" max="999999999999" placeholder="Precio de Compra">
                     </div>
                     <div class="mb-3">
                         <label for="formGroupExampleInput2" class="form-label">Cantidad</label>
-                        <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Cantidad Comprada">
+                        <input type="number" class="form-control" id="txtCantidad" max="999999999999" placeholder="Cantidad Comprada">
                     </div>
                     <div class="mb-3">
-                        <input type="Button" name="" value="Registrar Producto " onclick="Ingresar()" class="btn btn-primary" style="background-color: #1D5CA7">
+                        <a id="btnAtras" href="/ComputerStoreApp/page/inventario/Consult.html" class="btn btn-danger col-2">Regresar</a>
+                        <button id="btnCrearProducto" type="button" onclick="CrearProducto()" class="btn btn-primary" style="background-color: #1D5CA7">
+                            Registrar Producto
+                        </button>
                     </div>
                 </form>
             </div>

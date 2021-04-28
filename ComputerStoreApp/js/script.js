@@ -20,6 +20,27 @@ function ShowAlertMsg(titulo, texto, tipo) {
         icon: tipo
     });
 }
+
+function DataTablesAdd(table, row) {
+    $(table).DataTable({
+        fixedHeader: true,
+        pageLength: row,
+        "bPaginate": true,
+        "bFilter": false,
+        "bInfo": true,
+        "searching": false,
+        "lengthChange": false,
+        "language": {
+            "paginate": {
+                "previous": "Ant",
+                "next": "Sig",
+            },
+            "zeroRecords": "No se encontro nada.",
+            "info": "Pagina _PAGE_ de _PAGES_",
+            "infoEmpty": "NO hay registros disponibles."
+        }
+    });
+}
 //#region calculadora ganancias
 $("#btnCalcular").click(function() {
     IniciarCalculos();
@@ -294,3 +315,116 @@ function OnClickCreateTbl() {
     });
 }
 //#endregion Administrador
+//#region Productos
+function ValidateForm(btnSubmit) {
+    let Ok = ValidateFields(btnSubmit.parents('form'));
+    return Ok;
+}
+
+function ValidateFields(fields) {
+    let Ok = 0;
+    //validacion de los campos obligatorios en los formularios
+    fields.find('input[type="text"], input[type="number"]').each(function() {
+        if (this.value === "") {
+            $(this).addClass('input-error');
+            Ok = 99;
+        } else {
+            $(this).removeClass('input-error');
+        }
+    });
+
+    return Ok;
+}
+
+function BuildProduct() {
+    let Producto = {};
+    Producto.Codigo = $("#txtCodigo").val();
+    Producto.Nombre = $("#txtNombre").val();
+    Producto.Marca = $("#txtMarca").val();
+    Producto.Precio = $("#txtPrecio").val();
+    Producto.Cantidad = $("#txtCantidad").val();
+
+    return Producto;
+}
+
+function CrearProducto() {
+    ShowLoading(0);
+    let Ok = ValidateForm($("#btnCrearProducto"));
+    if (Ok === 0) {
+        let Producto = BuildProduct();
+        $.ajax({
+            type: "POST",
+            url: '/ComputerStoreApp/Controller/CrearProducto.php',
+            data: Producto,
+            success: function(response) {
+                var Data = JSON.parse(response);
+                if (Data.ok) {
+                    window.location.href = Data.url;
+                } else {
+                    ShowAlertMsg(Data.titulo, Data.msg, Data.tipoMsg);
+                }
+                ShowLoading(2);
+            },
+            error: function(error) {
+                ShowLoading(2);
+                ShowAlertMsg("Error inesperado", "A ocurrido un error en el proceso.", "error");
+            }
+        });
+    } else {
+        ShowLoading(2);
+        ShowAlertMsg("ComputerStoreApp", "Debes llenar todos los campos.", "warning");
+    }
+}
+
+function GetAllProduct() {
+    ShowLoading(0);
+    $.ajax({
+        type: "POST",
+        url: '/ComputerStoreApp/Controller/GetAllProduct.php',
+        success: function(response) {
+            var Data = JSON.parse(response);
+            if (Data.ok) {
+                let lsProducto = [];
+                Data.data.forEach(function(item) {
+                    let Producto = item.split('|');
+                    lsProducto.push(Producto);
+                });
+                FilterTable(lsProducto);
+                DataTablesAdd(tblProducto, 10);
+            } else {
+                ShowAlertMsg(Data.titulo, Data.msg, Data.tipoMsg);
+            }
+            ShowLoading(2);
+        },
+        error: function(error) {
+            ShowLoading(2);
+            ShowAlertMsg("Error inesperado", "A ocurrido un error en el proceso.", "error");
+        }
+    });
+}
+
+function FilterTable(data) {
+    let TableProducto = $('#tblProducto tbody');
+    TableProducto.empty();
+    TableProducto.append('<tbody>');
+    data.forEach(function(item) {
+        var htmlTbody = '<tr>' +
+            '<th scope="row">' + item[0] + '</th>' +
+            '<td>' + item[1] + '</td>' +
+            '<td>' + item[2] + '</td>' +
+            '<td>' + item[3] + '</td>' +
+            '<td>' + item[4] + '</td>' +
+            '<td>' + item[5] + '</td>' +
+            '<td>' +
+            '<div class="btn-group btn-group-sm" role="group" aria-label="Basic example">' +
+            '<a href="/ComputerStoreApp/page/inventario/Update.html?id=' + item[0] + '" class="btn btn-info">Editar</a>' +
+            '<a href="/ComputerStoreApp/page/inventario/Delete.html?id=' + item[0] + '" class="btn btn-danger">Eliminar</a>' +
+            '</div>' +
+            '</td>' +
+            '</tr>';
+        TableProducto.append(htmlTbody);
+    });
+
+    TableProducto.append('</tbody>')
+}
+//#endregion Productos

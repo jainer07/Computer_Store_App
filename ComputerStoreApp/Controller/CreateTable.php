@@ -3,6 +3,7 @@
  $username = "root";
  $password = "";
  $DataBase = "dbunad12";
+
 $conn = mysqli_connect($servername, $username, $password, $DataBase);
 
 if (!$conn) {
@@ -17,10 +18,14 @@ if (!$conn) {
 else {
      // Create table
     $sql = "CREATE TABLE tabla12 ( 
-        Id INT AUTO_INCREMENT PRIMARY KEY,Codigo VARCHAR(6) NOT NULL, 
-        Nombre VARCHAR(40) NOT NULL,Marca VARCHAR(40) NOT NULL, 
-        Precio DECIMAL NOT NULL, Cantidad INT NOT NULL
+        Id INT AUTO_INCREMENT PRIMARY KEY, 
+        Codigo VARCHAR(6) NOT NULL, 
+        Nombre VARCHAR(40) NOT NULL, 
+        Marca VARCHAR(40) NOT NULL, 
+        Precio DECIMAL NOT NULL,
+        Cantidad INT NOT NULL
     )";
+
     if (mysqli_query($conn, $sql)) {
         echo json_encode(
             array(
@@ -40,6 +45,6 @@ else {
             ));
     }
 
-    mysqli_close($conn);
+mysqli_close($conn);
  }
 ?>
