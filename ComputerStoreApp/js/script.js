@@ -336,13 +336,25 @@ function ValidateFields(fields) {
     return Ok;
 }
 
-function BuildProduct() {
+function GetParameterUrl(option) {
+    if (option == 0) {
+        let UrlString = window.location.href;
+        let Url = new URL(UrlString);
+        let Id = Url.searchParams.get("id");
+        return parseInt(Id);
+    }
+}
+
+function BuildProduct(option) {
     let Producto = {};
     Producto.Codigo = $("#txtCodigo").val();
     Producto.Nombre = $("#txtNombre").val();
     Producto.Marca = $("#txtMarca").val();
     Producto.Precio = $("#txtPrecio").val();
     Producto.Cantidad = $("#txtCantidad").val();
+    if (option == 1) {
+        Producto.Id = GetParameterUrl(0);
+    }
 
     return Producto;
 }
@@ -351,10 +363,39 @@ function CrearProducto() {
     ShowLoading(0);
     let Ok = ValidateForm($("#btnCrearProducto"));
     if (Ok === 0) {
-        let Producto = BuildProduct();
+        let Producto = BuildProduct(0);
         $.ajax({
             type: "POST",
             url: '/ComputerStoreApp/Controller/CrearProducto.php',
+            data: Producto,
+            success: function(response) {
+                var Data = JSON.parse(response);
+                if (Data.ok) {
+                    window.location.href = Data.url;
+                } else {
+                    ShowAlertMsg(Data.titulo, Data.msg, Data.tipoMsg);
+                }
+                ShowLoading(2);
+            },
+            error: function(error) {
+                ShowLoading(2);
+                ShowAlertMsg("Error inesperado", "A ocurrido un error en el proceso.", "error");
+            }
+        });
+    } else {
+        ShowLoading(2);
+        ShowAlertMsg("ComputerStoreApp", "Debes llenar todos los campos.", "warning");
+    }
+}
+
+function UpdateProducto() {
+    ShowLoading(0);
+    let Ok = ValidateForm($("#btnUpdateProducto"));
+    if (Ok === 0) {
+        let Producto = BuildProduct(1);
+        $.ajax({
+            type: "POST",
+            url: '/ComputerStoreApp/Controller/UpdateProducto.php',
             data: Producto,
             success: function(response) {
                 var Data = JSON.parse(response);
@@ -391,6 +432,38 @@ function GetAllProduct() {
                 });
                 FilterTable(lsProducto);
                 DataTablesAdd(tblProducto, 10);
+            } else {
+                ShowAlertMsg(Data.titulo, Data.msg, Data.tipoMsg);
+            }
+            ShowLoading(2);
+        },
+        error: function(error) {
+            ShowLoading(2);
+            ShowAlertMsg("Error inesperado", "A ocurrido un error en el proceso.", "error");
+        }
+    });
+}
+
+function GetByIdProduct() {
+    ShowLoading(0);
+    let Producto = {};
+    Producto.Id = GetParameterUrl(0);
+    $.ajax({
+        type: "POST",
+        url: '/ComputerStoreApp/Controller/GetByIdProduct.php',
+        data: Producto,
+        success: function(response) {
+            var Data = JSON.parse(response);
+            if (Data.ok) {
+                let Producto = [];
+                Data.data.forEach(function(item) {
+                    Producto = item.split('|');
+                });
+                $("#txtCodigo").val(Producto[1]);
+                $("#txtNombre").val(Producto[2]);
+                $("#txtMarca").val(Producto[3]);
+                $("#txtPrecio").val(Producto[4]);
+                $("#txtCantidad").val(Producto[5]);
             } else {
                 ShowAlertMsg(Data.titulo, Data.msg, Data.tipoMsg);
             }
